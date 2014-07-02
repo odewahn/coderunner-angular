@@ -1,0 +1,23 @@
+<div class="coderunner" ng-controller="CoderunnerControl as coderunnerCtrl">
+
+   <div class="control-area">
+	<a class="btn btn-primary">{{ coderunnerCtrl.control_button_label }}</a>
+	
+	<select ng-model="coderunnerCtrl.selected_language">
+	   <option ng-repeat="language in coderunnerCtrl.supported_languages" value="{{language}}">{{language}}</option>
+	</select>
+   </div>
+
+   <div class="display-area">
+      <div class="editor">	
+         <textarea>
+            Put your {{coderunnerCtrl.selected_language}} code here...
+         </textarea>
+      </div>
+
+      <div class="console">
+         Here's your {{coderunnerCtrl.selected_language}} output...
+      </div>
+   </div>
+
+</div>
