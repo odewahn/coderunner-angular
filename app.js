@@ -33,7 +33,7 @@
 
    app.directive('coderunner',function() {
 	  return {
-	     restrict: 'E',
+	     restrict: 'A',
 	     templateUrl: 'coderunner.html'	
 	  }
    });
