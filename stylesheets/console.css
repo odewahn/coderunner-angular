@@ -1,7 +1,6 @@
 /* The console container element */
 
 .coderunner {
-   position: absolute;
    width: 520px;
    height: 400px;
    background-color: #eee;

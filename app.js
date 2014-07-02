@@ -18,7 +18,7 @@
       this.toggleMode = function() {
 	     if (handle.mode === "editor") {
             handle.mode = "output";
-            handle.control_button_label = "Editor"
+            handle.control_button_label = "Edit"
 	     } else {
             handle.mode = "editor";
             handle.control_button_label = "Run"		
@@ -31,10 +31,13 @@
 
    });
 
-   app.directive('coderunner',function() {
+   // Note: per the angular docs, the compiler stirips "data-" on attributes before it
+   // attempts to do any matching, so we don't need to include it in the directive
+   app.directive('executable',function() {
 	  return {
 	     restrict: 'A',
-	     templateUrl: 'coderunner.html'	
+	     replace: true,
+	     templateUrl: 'coderunner.html'
 	  }
    });
 
