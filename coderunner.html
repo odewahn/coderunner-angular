@@ -9,9 +9,7 @@
 
    <div class="display-area">
 	
-      <div class="editor" ng-show="coderunnerCtrl.mode === 'editor'">	
-	 Put your {{coderunnerCtrl.selected_language}} code here...
-      </div>
+      <div class="editor" ng-show="coderunnerCtrl.mode === 'editor'" ng-transclude></div>
 
       <div class="output" ng-show="coderunnerCtrl.mode === 'output'">
          Here's your {{coderunnerCtrl.selected_language}} output...

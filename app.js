@@ -2,7 +2,7 @@
 		
    var app = angular.module('console', []);
 
-   app.controller('CoderunnerControl', function() {
+   app.controller('CoderunnerControl', function( $scope ) {
 	
 	  // Set up some default values
 	  this.supported_languages=["ruby", "python" , "lua", "javascript", "coffeescript"];
@@ -33,11 +33,15 @@
 
    // Note: per the angular docs, the compiler stirips "data-" on attributes before it
    // attempts to do any matching, so we don't need to include it in the directive
-   app.directive('executable',function() {
+   app.directive('executable', function() {
 	  return {
 	     restrict: 'A',
 	     replace: true,
-	     templateUrl: 'coderunner.html'
+	     transclude: true,
+	     templateUrl: 'coderunner.html',
+	     link: function(scope, element, attrs) {
+		    console.log(attrs.language);
+	     }
 	  }
    });
 
