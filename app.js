@@ -13,6 +13,10 @@
       this.mode = "editor"
       this.control_button_label = "Run"
 
+      this.language = "";
+      this.code = "";
+      this.element = {}
+
 
       // Toggle the mode between code view and output view
       this.toggleMode = function() {
@@ -38,9 +42,13 @@
 	     restrict: 'A',
 	     replace: true,
 	     transclude: true,
+	     scope: true,
 	     templateUrl: 'coderunner.html',
 	     link: function(scope, element, attrs) {
-		    console.log(attrs.language);
+		    scope.coderunnerCtrl.language = attrs.language;
+		    scope.coderunnerCtrl.code = element.find(".editor").text();
+		    scope.coderunnerCtrl.elements = element;
+		    console.log(element.find(".editor").text());
 	     }
 	  }
    });

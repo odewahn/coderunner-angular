@@ -12,7 +12,7 @@
       <div class="editor" ng-show="coderunnerCtrl.mode === 'editor'" ng-transclude></div>
 
       <div class="output" ng-show="coderunnerCtrl.mode === 'output'">
-         Here's your {{coderunnerCtrl.selected_language}} output...
+         Here's your {{coderunnerCtrl.selected_language}} output for <pre> {{ coderunnerCtrl.code}} </pre>
       </div>
 
    </div>
