@@ -1,8 +1,8 @@
 /* The console container element */
 
 .coderunner {
-   width: 520px;
-   height: 400px;
+   width: 90%;
+   height: 450px;
    background-color: #eee;
    border: 1px solid black;
    margin-left: 20px;
@@ -25,14 +25,14 @@
 
 .coderunner .display-area .editor {
    position: absolute;
-   width: 500px;
-   height: 300px;
+   width: 85%;
+   height: 350px;
    background-color: red;
 }
 
 .coderunner .display-area .output {
    position: absolute;
-   width: 500px;
-   height: 300px;
+   width: 85%;
+   height: 350px;
    background-color: blue;
 }
