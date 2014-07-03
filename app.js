@@ -43,8 +43,13 @@
 	     templateUrl: 'coderunner.html',
 	     link: function(scope, element, attrs) {
 		    scope.coderunnerCtrl.language = attrs.language;
-		    scope.coderunnerCtrl.code = element.find(".editor").text();
+		    // Grab the original code sample that has been transcluded in
+		    code = element.find(".editor").text();
+		    // replace the div with a textarea containing the code
+		    element.find(".editor").html("<textarea>"+code+"</textarea>");
+		    scope.coderunnerCtrl.code = code;
 		    scope.coderunnerCtrl.elements = element;
+		    
 		    console.log(element.find(".editor").text());
 	     }
 	  }
