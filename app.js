@@ -12,7 +12,7 @@
       // These are set by the directive that processes the executable code example
       this.language = "";
       this.code = "";
-      this.codemirror = {};
+      this.codemirror = null;
 
       // Create a codemirror item and attach it to the passed element
       // note that the element should be a textarea
@@ -60,9 +60,9 @@
 		    // replace the div with a textarea containing the code
 		    element.find(".editor").html("<textarea>"+code+"</textarea>");
 		    scope.coderunnerCtrl.code = code;
-		    scope.coderunnerCtrl.initCodemirror(element.find(".editor").find("textarea"));
+		    scope.coderunnerCtrl.initCodemirror(element.find(".editor").find("textarea")[0]);
 		    
-		    console.log(element.find(".editor").find("textarea").text());
+		    console.log("==> " + element.find(".editor").find("textarea")[0] );
 	     }
 	  }
    });
