@@ -5,14 +5,11 @@
    app.controller('CoderunnerControl', function( $scope ) {
 	
 	  // Set up some default values
-	  this.supported_languages=["ruby", "python" , "lua", "javascript", "coffeescript"];
-	  this.selected_language = "ruby"
-
       var handle = this;
-
       this.mode = "editor"
       this.control_button_label = "Run"
 
+      // These are set by the directive that processes the executable code example
       this.language = "";
       this.code = "";
       this.element = {}
