@@ -1,0 +1,38 @@
+/* The console container element */
+
+.coderunner {
+   width: 90%;
+   height: 450px;
+   background-color: #eee;
+   border: 1px solid black;
+   margin-left: 20px;
+   margin-top: 20px;
+}
+
+.coderunner .control-area {
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.coderunner .control-area a {
+	width: 100px;
+}
+
+.coderunner .display-area {
+   padding: 10px;	
+}
+
+
+.coderunner .display-area .editor {
+   position: absolute;
+   width: 85%;
+   height: 350px;
+   background-color: red;
+}
+
+.coderunner .display-area .output {
+   position: absolute;
+   width: 85%;
+   height: 350px;
+   background-color: blue;
+}
