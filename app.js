@@ -15,9 +15,26 @@
       this.codemirror = null;
       this.jqconsole = null;
 
-      this.jsrepl = null;
+      // load jsrepl execution environment
       this.jsrepl_loaded = false;
-      this.jsrepl_pct_loaded = 5;
+      this.jsrepl_pct_loaded = 0;
+      this.jsrepl = new JSREPL({  
+		    input: function() {},  
+		    output: function(data) {
+		      handle.jqconsole.append(data);
+		      console.log(data);
+		    },  
+		    result: function(data) {
+		      handle.jqconsole.append("=> " + data);
+		    },  
+		    error: function() {},  
+		    progress: function() {},  
+		    timeout: {  
+		      time: 30000,  
+		      callback: function() {}  
+		    }  
+		});
+
 
       // Create a codemirror item and attach it to the passed element
       // note that the element should be a textarea
@@ -27,14 +44,25 @@
 		  });
       }
 
+
+      // Initialize the console where output is displayed
       this.initJQConsole = function(e) {
 	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n > " );
       };
 
+
+      // Load the given language
+      this.initJSREPL = function() {
+         handle.jsrepl.loadLanguage(handle.language, function() {
+            handle.jsrepl_loaded = true;
+		    $scope.$apply();   // force the watch to reload so that the UI gets refreshed
+		 }, true);
+
+      }
+
       // this runs when the console mode is entered
       this.runCode = function() {
-         //handle.jqconsole.Clear();
-         handle.jqconsole.Write(handle.code);
+         handle.jsrepl.eval(handle.code);
       }; 
 
       // Toggle the mode between code view and output view
@@ -49,10 +77,6 @@
             handle.control_button_label = "Run"	
 	     }
       }
-
-      //I'd start the JSREPL right in here -- it'll be great!
-
-     // oh, and I should put the codemirror and the console in here, as well!
 
    });
 
@@ -74,8 +98,7 @@
 		    scope.coderunnerCtrl.code = code;
 		    scope.coderunnerCtrl.initCodemirror(element.find(".editor").find("textarea")[0]); //set up codemirror
 		    scope.coderunnerCtrl.initJQConsole(element.find(".output"));
-		
-		    console.log("==> " + element.find(".editor").find("textarea")[0] );
+		    scope.coderunnerCtrl.initJSREPL();
 	     }
 	  }
    });

@@ -45,4 +45,5 @@
 
 .coderunner .progress {
 	float:left;
+	width: 100%;
 }

@@ -2,13 +2,17 @@
 
    <div class="control-area">
 	
-      <div class="progress" ng-hide="coderunnerCtrl.jsrepl_loaded">
-         <div class="progress-bar" role="progressbar" ng-model="coderunnerCtrl.jsrepl_pct_loaded" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" >
-            Loading {{ coderunnerCtrl.language }}...
-         </div>
+
+      <div class="progress" ng-model="coderunnerCtrl.jsrepl_loaded" ng-hide="coderunnerCtrl.jsrepl_loaded">
+         <div class="progress-bar" 
+            role="progressbar" 
+            ng-model="coderunnerCtrl.jsrepl_pct_loaded" 
+            style="width: {{coderunnerCtrl.jsrepl_pct_loaded}}% " >
+               Loading {{coderunnerCtrl.language}}
+          </div>
       </div>
 
-      <div ng-show="coderunnerCtrl.jsrepl_loaded">
+      <div ng-show="coderunnerCtrl.jsrepl_loaded" ng-model="coderunnerCtrl.jsrepl_loaded" >
          <a class="btn btn-primary" ng-click="coderunnerCtrl.toggleMode()">{{ coderunnerCtrl.control_button_label }}</a>
       </div>	
 	
@@ -21,7 +25,7 @@
       <div class="output" ng-show="coderunnerCtrl.mode === 'output'"></div>
  
    </div>
-   
+  
 
 
 </div>
