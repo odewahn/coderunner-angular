@@ -12,10 +12,15 @@
 .coderunner .control-area {
 	padding: 10px;
 	border-bottom: 1px solid black;
+	height: 50px;
 }
 
 .coderunner .control-area a {
 	width: 100px;
+}
+
+.coderunner .progress .progress-bar {
+	width: 60%;
 }
 
 .coderunner .display-area {
@@ -36,4 +41,8 @@
    width: 85%;
    height: 350px;
    background-color: blue;
+}
+
+.coderunner .progress {
+	float:left;
 }

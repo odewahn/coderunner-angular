@@ -14,7 +14,10 @@
       this.code = "";
       this.codemirror = null;
       this.jqconsole = null;
+
       this.jsrepl = null;
+      this.jsrepl_loaded = false;
+      this.jsrepl_pct_loaded = 5;
 
       // Create a codemirror item and attach it to the passed element
       // note that the element should be a textarea
