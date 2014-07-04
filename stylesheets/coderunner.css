@@ -32,7 +32,6 @@
    position: absolute;
    width: 85%;
    height: 350px;
-   background-color: red;
 }
 
 .coderunner .display-area .output {
@@ -40,10 +39,4 @@
    position: absolute;
    width: 85%;
    height: 350px;
-   background-color: blue;
-}
-
-.coderunner .progress {
-	float:left;
-	width: 100%;
 }

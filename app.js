@@ -17,15 +17,13 @@
 
       // load jsrepl execution environment
       this.jsrepl_loaded = false;
-      this.jsrepl_pct_loaded = 0;
       this.jsrepl = new JSREPL({  
 		    input: function() {},  
 		    output: function(data) {
-		      handle.jqconsole.append(data);
-		      console.log(data);
+		      handle.jqconsole.Write(data);
 		    },  
 		    result: function(data) {
-		      handle.jqconsole.append("=> " + data);
+		      handle.jqconsole.Write("=> " + data);
 		    },  
 		    error: function() {},  
 		    progress: function() {},  
