@@ -31,6 +31,7 @@
 }
 
 .coderunner .display-area .output {
+   overflow: auto;
    position: absolute;
    width: 85%;
    height: 350px;

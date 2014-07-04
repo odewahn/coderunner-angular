@@ -13,28 +13,37 @@
       this.language = "";
       this.code = "";
       this.codemirror = null;
+      this.jqconsole = null;
+      this.jsrepl = null;
 
       // Create a codemirror item and attach it to the passed element
       // note that the element should be a textarea
       this.initCodemirror = function(e) {
-	     codemirror = CodeMirror.fromTextArea(e, {
+	     handle.codemirror = CodeMirror.fromTextArea(e, {
 			lineNumbers: true
-		    //height: "350px"
-		    //parserfile: "parsexml.js",
-		    //stylesheet: "css/xmlcolors.css",
-		    //path: "js/",
-		    //continuousScanning: 500,
 		  });
       }
 
+      this.initJQConsole = function(e) {
+	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n > " );
+      };
+
+      // this runs when the console mode is entered
+      this.runCode = function() {
+         //handle.jqconsole.Clear();
+         handle.jqconsole.Write(handle.code);
+      }; 
+
       // Toggle the mode between code view and output view
       this.toggleMode = function() {
+         handle.code = handle.codemirror.getValue();	
 	     if (handle.mode === "editor") {
             handle.mode = "output";
             handle.control_button_label = "Edit"
+            handle.runCode();
 	     } else {
             handle.mode = "editor";
-            handle.control_button_label = "Run"		
+            handle.control_button_label = "Run"	
 	     }
       }
 
@@ -60,8 +69,9 @@
 		    // replace the div with a textarea containing the code
 		    element.find(".editor").html("<textarea>"+code+"</textarea>");
 		    scope.coderunnerCtrl.code = code;
-		    scope.coderunnerCtrl.initCodemirror(element.find(".editor").find("textarea")[0]);
-		    
+		    scope.coderunnerCtrl.initCodemirror(element.find(".editor").find("textarea")[0]); //set up codemirror
+		    scope.coderunnerCtrl.initJQConsole(element.find(".output"));
+		
 		    console.log("==> " + element.find(".editor").find("textarea")[0] );
 	     }
 	  }
