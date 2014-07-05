@@ -18,12 +18,17 @@
       // load jsrepl execution environment
       this.jsrepl_loaded = false;
       this.jsrepl = new JSREPL({  
-		    input: function() {},  
+		    input: function() {
+			   handle.jqconsole.Input(function(input) {  
+				  console.log("You typed: " + input);
+				  return input;  
+			   });
+		    },  
 		    output: function(data) {
-		      handle.jqconsole.Write(data);
+		      handle.jqconsole.Write(data + "\n");
 		    },  
 		    result: function(data) {
-		      handle.jqconsole.Write("=> " + data);
+		      handle.jqconsole.Write(data + "\n");
 		    },  
 		    error: function() {},  
 		    progress: function() {},  
@@ -45,7 +50,7 @@
 
       // Initialize the console where output is displayed
       this.initJQConsole = function(e) {
-	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n > " );
+	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n" );
       };
 
 
