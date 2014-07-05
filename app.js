@@ -29,7 +29,9 @@
 		    result: function(data) {
 		      handle.jqconsole.Write(data + "\n");
 		    },  
-		    error: function() {},  
+		    error: function(data) {
+			  handle.jqconsole.Write(data + "\n");
+		    },  
 		    progress: function() {},  
 		    timeout: {  
 		      time: 30000,  
@@ -50,6 +52,7 @@
       // Initialize the console where output is displayed
       this.initJQConsole = function(e) {
 	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n" );
+	     handle.jqconsole.SetPromptLabel('> ')
 	     handle.startPrompt();
       };
 
