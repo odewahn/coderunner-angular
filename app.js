@@ -50,9 +50,9 @@
 
 
       // Initialize the console where output is displayed
+     //  Inspired by http://kapteijns.org/2014/03/21/ruby-repl-in-javascript.html
       this.initJQConsole = function(e) {
-	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n" );
-	     handle.jqconsole.SetPromptLabel('> ')
+	     handle.jqconsole = e.jqconsole("Starting " + handle.language + " interpreter...\n", "> " );
 	     handle.startPrompt();
       };
 
@@ -76,18 +76,13 @@
 
       }
 
-      // this runs when the console mode is entered
-      this.runCode = function() {
-         handle.jsrepl.eval(handle.code);
-      }; 
-
       // Toggle the mode between code view and output view
       this.toggleMode = function() {
          handle.code = handle.codemirror.getValue();	
 	     if (handle.mode === "editor") {
             handle.mode = "output";
             handle.control_button_label = "Edit"
-            handle.runCode();
+            handle.jsrepl.eval(handle.code);
 	     } else {
             handle.mode = "editor";
             handle.control_button_label = "Run"	
